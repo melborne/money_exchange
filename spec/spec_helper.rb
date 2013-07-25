@@ -9,11 +9,15 @@ module HelperMethods
   end
 
   def mock_google_currency_api(base, target)
-    uri = "http://rate-exchange.appspot.com/currency"
-    query = "?from=#{base}&to=#{target}&q=1"
-    response = {body: fixture("currency_rate.json")}
-    
-    FakeWeb.register_uri(:get, uri+query, :body => response)
+    uri_re = %r|http://www\.google\.com/ig/calculator|
+    begin
+      response ||= fixture("rate_#{base}_to_#{target}.json")
+
+      FakeWeb.register_uri(:get, uri_re, :body => response)
+    rescue Errno::ENOENT
+      response = fixture("rate_error.json")
+      retry
+    end
   end
 end
 
