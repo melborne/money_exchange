@@ -26,9 +26,9 @@ module MoneyExchange
     end
     
     def method_missing(meth, *a, &b)
-      md = meth.to_s.match(/^to_([a-z]{3})$/)
-      if md
-        Exchange.calc(self, md.captures[0])
+      case meth
+      when /^to_([a-z]{3})$/
+        Exchange.calc(self, $~[1])
       else
         super
       end
@@ -67,8 +67,6 @@ module MoneyExchange
       def call_google_currency_api(base, target)
         uri = "http://www.google.com/ig/calculator"
         query = "?hl=en&q=1#{base}=?#{target}"
-        # uri = "http://rate-exchange.appspot.com/currency"
-        # query = "?from=#{base}&to=#{target}&q=1"
         URI.parse(uri+query).read
       # rescue OpenURI::HTTPError => e
         # retry with vice versa
