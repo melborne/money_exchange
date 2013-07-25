@@ -4,12 +4,15 @@ require "json"
 
 module MoneyExchange
 
-  # Presume '#xxx_to_yyy' style methods as for money exchanges
+  # Presume '#xxx_to' style methods as for money exchanges
   def method_missing(meth, *a, &b)
-    md = meth.to_s.match(/^([a-z]{3})_to_([a-z]{3})$/)
-    if md
-      currency, target = md.captures
+    case meth
+    when /^([a-z]{3})_to_([a-z]{3})$/
+      currency, target = $~.captures
       Money.new(self, currency).send("to_#{target}")
+    when /^([a-z]{3})_to$/
+      currency, targets = $~[1], a
+      targets.map { |t| Money.new(self, currency).send("to_#{t}") }
     else
       super
     end

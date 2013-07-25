@@ -7,13 +7,13 @@ describe MoneyExchange do
 end
 
 describe Numeric do
+  let(:nocurrency_error) { MoneyExchange::Exchange::NoCurrencyDataError }
+
   before(:each) do
     FakeWeb.clean_registry
   end
   
   describe '#xxx_to_yyy' do
-    let(:nocurrency_error) { MoneyExchange::Exchange::NoCurrencyDataError }
-
     context 'convert self in XXX currency to YYY currency' do
       it 'exchanges USD to JPY' do
         mock_google_currency_api('usd', 'jpy')
@@ -42,4 +42,23 @@ describe Numeric do
       expect { 1.xxx_to_y }.to raise_error(NoMethodError)
     end
   end
+
+  context 'convert self to multiple currencies' do
+    it 'exchanges USD to JPY and EUR' do
+      ['jpy', 'eur'].each { |target| mock_google_currency_api('usd', target) }
+      1.00.usd_to(:jpy, :eur).should eql [100.31, 0.76]
+    end
+
+    it 'exchanges JPY to USD and EUR' do
+      ['usd', 'eur'].each { |target| mock_google_currency_api('jpy', target) }
+      100.jpy_to(:usd, :eur).should eql [1.0, 0.76]
+    end
+
+    it 'raise NoCurrencyDataError' do
+      ['usd', 'xxx'].each { |target| mock_google_currency_api('jpy', target) }
+      expect { 100.jpy_to(:usd, :xxx) }.to raise_error(nocurrency_error)
+    end
+  end
+
+
 end
