@@ -21,6 +21,7 @@ module HelperMethods
       retry
     end
   end
+
 end
 
 RSpec.configuration.include(HelperMethods)
