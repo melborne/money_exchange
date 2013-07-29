@@ -1,4 +1,5 @@
 require "money_exchange/version"
+require "money_exchange/command"
 require "open-uri"
 require "json"
 
@@ -21,7 +22,7 @@ module MoneyExchange
   class Money
     attr_reader :amount, :currency
     def initialize(amount, currency)
-      @amount = amount
+      @amount = Float(amount)
       @currency = currency
     end
     
@@ -76,5 +77,9 @@ module MoneyExchange
 end
 
 class Numeric
+  include MoneyExchange
+end
+
+class String
   include MoneyExchange
 end
