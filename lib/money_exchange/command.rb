@@ -1,3 +1,5 @@
+require "thor"
+
 module MoneyExchange
   class Command < Thor
     desc "ex AMOUNT BASE *TARGETS", "Currency Exchange from base to targets"

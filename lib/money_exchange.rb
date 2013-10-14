@@ -45,6 +45,7 @@ module MoneyExchange
         (res * 100).round.to_f / 100
       end
 
+      private
       def rate(base, target)
         response = call_google_currency_api(base, target)
         rate = parse_rate(response)
@@ -69,8 +70,8 @@ module MoneyExchange
         uri = "http://www.google.com/ig/calculator"
         query = "?hl=en&q=1#{base}=?#{target}"
         URI.parse(uri+query).read
-      # rescue OpenURI::HTTPError => e
-        # retry with vice versa
+      rescue OpenURI::HTTPError => e
+        abort "HTTP Access Error:#{e}"
       end
     end
   end

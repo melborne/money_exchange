@@ -1,6 +1,6 @@
 # MoneyExchange
 
-TODO: Write a gem description
+Inspired by [codegram/simple_currency](https://github.com/codegram/simple_currency)
 
 ## Installation
 
