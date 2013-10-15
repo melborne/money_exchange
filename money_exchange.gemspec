@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = MoneyExchange::VERSION
   spec.authors       = ["kyoendo"]
   spec.email         = ["postagie@gmail.com"]
-  spec.description   = %q{Just currency exchange tool}
-  spec.summary       = %q{Just currency exchange tool}
-  spec.homepage      = ""
+  spec.description   = %q{Just another currency converter}
+  spec.summary       = %q{Just another currency converter using Google currency converter API.}
+  spec.homepage      = "https://github.com/melborne/money_exchange"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
