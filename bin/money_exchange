@@ -4,27 +4,3 @@ require 'money_exchange'
 
 MoneyExchange::Command.start(ARGV)
 
-
-__END__
-
-AUD 	$ 	オーストラリアドル（豪ドル） 	オーストラリア
-CAD 	$ 	カナダドル 	カナダ
-CHF 	S₣ 	スイスフラン 	スイス
-CNY 	元 	元 	中国
-DKK 	kr 	デンマーククローナ 	デンマーク
-EUR 	€ 	ユーロ 	EU
-GBP 	£ 	英ポンド 	イギリス
-HKD 	$ 	香港ドル 	香港
-HUF 	Ft 	ハンガリーフォリント 	ハンガリー
-ISK 	kr 	アイスランドクローナ 	アイスランド
-INR 	Rs 	インド・ルピー 	インド
-JPY 	\ 	円 	日本
-MXN 	$ 	メキシコペソ 	メキシコ
-NOK 	kr 	ノルウェークローネ 	ノルウェー
-NZD 	$ 	ニュージーランドドル 	ニュージーランド
-PLN 	zł 	ポーランドズウォティ 	ポーランド
-SEK 	kr 	スウェーデンクローナ 	スウェーデン
-SGD 	$ 	シンガポールドル 	シンガポール
-TRY 	₤ 	トルコリラ 	トルコ
-USD 	$ 	米ドル 	アメリカ
-ZAR 	R 	南アフリカランド 	南アフリカ

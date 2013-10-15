@@ -12,7 +12,8 @@ describe MoneyExchange::Command do
       mock_google_currency_api('usd', 'jpy')
       argv = ['ex', '1.00', 'usd', 'jpy']
       MoneyExchange::Command.start(argv)
-      expect($stdout.string.strip).to eql '100.31'
+      res = "\e[32mUSD\e[0m 1.00  => \e[32mJPY\e[0m 100.31\n             \e[32m\e[0m"
+      expect($stdout.string.strip).to eql res
     end
   end
 

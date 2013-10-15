@@ -1,4 +1,5 @@
 require "money_exchange/version"
+require "money_exchange/core_ext"
 require "money_exchange/command"
 require "open-uri"
 require "json"
