@@ -1,6 +1,6 @@
 # MoneyExchange
 
-Inspired by [codegram/simple_currency](https://github.com/codegram/simple_currency)
+Just another currency converter based on [Google's Currency Converter and JSON API](http://motyar.blogspot.jp/2011/12/googles-currency-converter-and-json-api.html "Google's Currency Converter and JSON API"). 
 
 ## Installation
 
@@ -18,7 +18,23 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Require it and available `#xxx_to_yyy` and `#xxx_to` for Fixnum and String.
+
+```ruby
+1.usd_to_jpy
+# => 98.46
+
+1.usd_to(:jpy, :eur, :mxn)
+# => [98.46, 0.74, 12.97]
+```
+
+## Command
+
+It comes with `money_exchange` command. Just type it on your terminal and read the help.
+
+## Thank you
+
+I got some hits from [codegram/simple_currency](https://github.com/codegram/simple_currency). Thank you.
 
 ## Contributing
 
